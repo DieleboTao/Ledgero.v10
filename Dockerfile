@@ -10,14 +10,11 @@ COPY backend/requirements.txt .
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the backend folder content into /app
+# Copy backend source code
 COPY backend/ .
 
-# Expose port for FastAPI
-EXPOSE 8000
-
-# Set Python path so imports work
+# Set Python path
 ENV PYTHONPATH=/app
 
-# Start the FastAPI app
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# Start FastAPI using Render's assigned port
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port $PORT"]
