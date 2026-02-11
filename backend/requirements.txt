@@ -8,3 +8,6 @@ python-multipart
 pydantic
 python-dotenv
 reportlab
+fastapi
+uvicorn
+python-multipart
