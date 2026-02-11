@@ -10,3 +10,7 @@ Base.metadata.create_all(bind=engine)
 app.include_router(transactions.router, prefix="/api/transactions", tags=["transactions"])
 app.include_router(receipts.router, prefix="/api/receipts", tags=["receipts"])
 app.include_router(reports.router, prefix="/api/reports", tags=["reports"])
+
+@app.get("/")
+def root():
+    return {"status": "Ledgero API is running"}
